@@ -150,7 +150,7 @@ def main():
                                                 # Categorize
 
                                                 # Unpickle classifier
-                                                clf = joblib.load("/Users/arifeensaeed/notes-ml-app/clf_final.pkl") # update with your own here
+                                                clf = joblib.load("clf_final.pkl") # update with your own here
 
                                                 # Get prediction
                                                 pred_category = str(clf.predict([note])[0])
@@ -312,7 +312,7 @@ def main():
                                                                 new_note_due_date = ''
                                                         
                                                 # Unpickle classifier
-                                                clf = joblib.load("/Users/arifeensaeed/notes-ml-app/clf_final.pkl")
+                                                clf = joblib.load("clf_final.pkl")
 
                                                 # Get prediction
                                                 new_pred_category = str(clf.predict([new_note])[0])
