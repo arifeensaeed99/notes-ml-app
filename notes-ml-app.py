@@ -168,11 +168,11 @@ def main():
                                                                 pred_prob = clf.predict_proba([note])
                                                                 
                                                                 # View all classes of model
-                                                                # st.write(clf.classes_)
+                                                                st.write(clf.classes_)
 
                                                                 # View probabilities of all classes for entered note
-                                                                # st.write(pred_prob)
-                                                                pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'Islam', 'People', 'Pokemon', 'Travel'])
+                                                                st.write(pred_prob)
+                                                                pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
                                                                 # Other Potential Categories (Conditional Display)
 
@@ -197,7 +197,7 @@ def main():
                                                                                 st.write(f'It can also be: {second_category}')
                                                                 
                                                                 st.caption("Prediction Probabilities by Category for Note")
-                                                                # st.dataframe(pred_prob_df)
+                                                                st.dataframe(pred_prob_df)
                                                                 st.bar_chart(pred_prob_df.iloc[0])
 
                                                                 # st.snow()
@@ -322,11 +322,11 @@ def main():
                                                 pred_prob = clf.predict_proba([note])
                                                         
                                                 # View all classes of model
-                                                # st.write(clf.classes_)
+                                                st.write(clf.classes_)
 
                                                 # View probabilities of all classes for entered note
-                                                # st.write(pred_prob)
-                                                pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'Islam', 'People', 'Pokemon', 'Travel'])
+                                                st.write(pred_prob)
+                                                pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
 
 
@@ -367,11 +367,11 @@ def main():
                                                         new_pred_prob = clf.predict_proba([new_note])
                                                         
                                                         # View all classes of model
-                                                        # st.write(clf.classes_)
+                                                        st.write(clf.classes_)
 
                                                         # View probabilities of all classes for new entered note
-                                                        # st.write(new_pred_prob)
-                                                        new_pred_prob_df = pd.DataFrame(new_pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'Islam', 'People', 'Pokemon', 'Travel'])
+                                                        st.write(new_pred_prob)
+                                                        new_pred_prob_df = pd.DataFrame(new_pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
 
 
@@ -398,7 +398,7 @@ def main():
                                                                         st.write(f'It can now also be: {new_second_category}')
                                                         
                                                         st.caption("New Prediction Probabilities by Category for Note")
-                                                        # st.dataframe(new_pred_prob_df)
+                                                        st.dataframe(new_pred_prob_df)
                                                         st.bar_chart(new_pred_prob_df.iloc[0])
 
                                                 st.caption("Note: If your answer to the below prompt is 'No', you will be given the option to manually enter a category. Otherwise, the new highest predicted category will be used.")
@@ -462,7 +462,7 @@ def main():
                 new_password = st.text_input("Password", type = 'password')
                 if new_username:
                         if new_password:   
-                                if len(new_password) >= 6: 
+                                if len(new_password) >= 5: 
                                         l, u, p, d = 0, 0, 0, 0
                                         for i in new_password:
                                                 # counting lowercase alphabets
@@ -498,7 +498,7 @@ def main():
                                         else:
                                                 st.warning('Password must contain an uppercase, a lowercase, a digit, and a special character')
                                 else:
-                                        st.warning('Password must be at least 6 characters long')
+                                        st.warning('Password must be at least 5 characters long')
                         else:
                                 st.warning('Please enter a password')
                 else:
@@ -510,20 +510,32 @@ def main():
                 st.write('')
                 st.image('https://i.imgur.com/sOTG2CF.jpg', caption = "Winter Park, Colorado (my wife's favorite picture of me)", width=300)
                 st.subheader('About the Author/Application')
-                st.write("This application was designed with <3 by Arifeen Saeed, who is currently a Deloitte Consulting Analyst in Austin, TX. Inspired by his own usage of the Google Keep and Apple Notes Apps, Arifeen was looking for a way to auto-classify his notes which easily get messy due to a quick jotting-down, and then the idea of using Streamlit dawned upon him. Combining SQL and Database Management, Python, Pandas, NumPy, and Machine Learning using scikit-learn and other libaries, this powerful data science application can serve as a repo for all your tasks and notes, and keep them sorted and timely. It can even output a report of the categories of your notes. Version 7 of this app adds weather, more insight on your predictions, as well as UI changes. Additionally, data from Kaggle and elsewhere was utilized for more accurate and powerful predictions. Users can also log-in and sign up now and have their notes securely stored for their own accounts. Arifeen hopes this is one of the many projects that will lead him to Stanford University MS CS, insha'Allah (God-willing).")
+                st.write("This application was designed with <3 by Arifeen Saeed, who is currently a Deloitte Consulting Analyst in Austin, TX. Inspired by his own usage of the Google Keep and Apple Notes Apps, Arifeen was looking for a way to auto-classify his notes which easily get messy due to a quick jotting-down, and then the idea of using Streamlit dawned upon him. Combining SQL and Database Management, Python, Pandas, NumPy, and Machine Learning using scikit-learn and other libaries, this powerful data science application can serve as a repo for all your tasks and notes, and keep them sorted and timely. It can even output a report of the categories of your notes. Version 8 of includes more predictive prowess due to better training data, weather, more insights on your predictions, as well as UI changes. Additionally, data from Kaggle and elsewhere was utilized (sourced below). Users can also log-in and sign up now and have their notes securely stored for their own accounts, accessible on any device, any time, any where. Arifeen hopes this is one of the many projects that will lead him to a Master in Computer Science (MSCS), concentrating in Machine Learning, insha'Allah (God-willing).")
                 st.text("")
                 st.text('Datasets/sources used so far:')
                 st.text('SimpleMaps World Cities Basic v 1.75')
                 st.text('Grocery UPC Database')
                 st.text('QURAN English')
-                st.text('Pokemon.csv (GitHub)')
+                # st.text('Pokemon.csv (GitHub)')
                 st.text('1000 Things I Want to Do in My Life (Choosing Figs website)')
                 st.text('World University Rankings Kaggle')
                 st.text('College Majors (Kaggle)')
                 st.text('FiveThirtyEight Most Common Name Dataset (Kaggle)')
                 st.text('Forbes Global Companies in 2022 (Kaggle)')
                 st.text('Standard Occupational Classification (US Bureau of Labor Statistics)')
-                
+                st.text('GeoNames All Countries Points of Interests')
+                st.text('Groceries Dataset Kaggle')
+                st.text('Bible verses from King James Version Kaggle')
+                st.text('New Years Resolutions Twitter Kaggle')
+                st.text('10000 Things to Do Before You Die aussieontheroad')
+                st.text('Google Answers Q: List of universities/colleges and their Abbreviations')
+                st.text('Forebears Most Popular First Names in the World')
+                st.text('SSA.gov most common names 1000')
+                st.text('Brandedgirls.com Modern Names for Muslim Girls')
+                st.text('Babynamemeaningz.com/3-islamic-boys-names')
+                st.text('Fortune 1000 companies in 2021 and 2022 Kaggle')
+                st.text('Exploring Monster.com Job Postings Kaggle')
+
                 # Pokemon!
                 st.write("")
                 st.write("")
