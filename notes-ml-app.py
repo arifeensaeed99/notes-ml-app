@@ -150,7 +150,8 @@ def main():
                                                 # Categorize
 
                                                 # Unpickle classifier
-                                                clf = joblib.load("clf_final.pkl") # update with your own here
+                                                clf = joblib.load("clf_final.pkl") # update
+
 
                                                 # Get prediction
                                                 pred_category = str(clf.predict([note])[0])
@@ -198,9 +199,9 @@ def main():
                                                                 
                                                                 st.caption("Prediction Probabilities by Category for Note")
                                                                 # st.dataframe(pred_prob_df)
-                                                                # st.bar_chart(pred_prob_df.iloc[0])
-                                                                fig = px.pie(hole = 0.3, data = pred_prob_df)
-                                                                st.plotly_chart(fig)
+                                                                st.bar_chart(pred_prob_df.iloc[0])
+                                                                # fig = px.pie(hole = 0.3, values = pred_prob_df.values[0], names = pred_prob_df.keys())
+                                                                # st.plotly_chart(fig)
                                                                 # st.snow()
                                                         
                                                         else:
@@ -355,9 +356,9 @@ def main():
                                                 
                                                 st.caption("Prediction Probabilities by Category for Note (Past)")
                                                 # st.dataframe(pred_prob_df)
-                                                # st.bar_chart(pred_prob_df.iloc[0])
-                                                fig = px.pie(hole = 0.3, data = pred_prob_df)
-                                                st.plotly_chart(fig)
+                                                st.bar_chart(pred_prob_df.iloc[0])
+                                                # fig = px.pie(hole = 0.3, values = pred_prob_df.values[0], names = pred_prob_df.keys(), )
+                                                # st.plotly_chart(fig)
 
                                                 if st.button('Categorize Edited Note'):
                                                         # Get latest prediction
@@ -402,9 +403,9 @@ def main():
                                                         
                                                         st.caption("New Prediction Probabilities by Category for Note")
                                                         # st.dataframe(new_pred_prob_df)
-                                                        # st.bar_chart(new_pred_prob_df.iloc[0])
-                                                        fig = px.pie(hole = 0.3, data = new_pred_prob_df)
-                                                        st.plotly_chart(fig)
+                                                        st.bar_chart(new_pred_prob_df.iloc[0])
+                                                        # fig = px.pie(hole = 0.3, values = new_pred_prob_df.values[0], names = new_pred_prob_df.keys())
+                                                        # st.plotly_chart(fig)
 
                                                 st.caption("Note: If your answer to the below prompt is 'No', you will be given the option to manually enter a category. Otherwise, the new highest predicted category will be used.")
                                                 manual_switch = st.radio("Are you okay with the note being edited to have the highest predicted category?", ['Yes', 'No'])
