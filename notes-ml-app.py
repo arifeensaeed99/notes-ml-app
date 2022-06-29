@@ -71,7 +71,7 @@ def main():
 
         if choice == 'Home':
                 st.subheader("Home")
-                st.write('This application auto-classifies your notes/tasks for you, and stores them in a local database. Functionality also exists to update and delete notes, view all notes or notes of a certain category, and see other reports. Please use the Sidebar on the left to login and begin using the application. Or, if this your first time, please sign up to use the application. Finally, you can learn more about the application from the Sidebar as well.')
+                st.write('This application auto-classifies your notes/tasks for you, and stores them in a protected, online database. Functionality also exists to update and delete notes, view all notes or notes of a certain category, and see other reports. Please use the Sidebar on the left to login and begin using the application. Or, if this your first time, please sign up to use the application. Finally, you can learn more about the application from the Sidebar as well.')
         elif choice == 'Login':
                 username = st.sidebar.text_input("Username")
                 password = st.sidebar.text_input("Password", type = 'password')
@@ -156,7 +156,7 @@ def main():
                                                 pred_category = str(clf.predict([note])[0])
                                                 
                                                 # If button is pressed
-                                                st.caption('NOTE: The highest predicted category will be used and stored by default. This can be edited by selecting Update Notes from above.')
+                                                st.caption('NOTE: If your notes are not predicting well, try adding details. For example, instead of "UT", enter "the Univeristy of Texas at Austin." Additonally, note that the highest predicted category will be used and stored by default. This can be edited by selecting Update Notes from above.')
                                                 if st.button('Categorize Note'):
                                                         if note:
                                                                 # Get latest prediction
@@ -168,10 +168,10 @@ def main():
                                                                 pred_prob = clf.predict_proba([note])
                                                                 
                                                                 # View all classes of model
-                                                                st.write(clf.classes_)
+                                                                # st.write(clf.classes_)
 
                                                                 # View probabilities of all classes for entered note
-                                                                st.write(pred_prob)
+                                                                # st.write(pred_prob)
                                                                 pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
                                                                 # Other Potential Categories (Conditional Display)
@@ -197,8 +197,9 @@ def main():
                                                                                 st.write(f'It can also be: {second_category}')
                                                                 
                                                                 st.caption("Prediction Probabilities by Category for Note")
-                                                                st.dataframe(pred_prob_df)
-                                                                st.bar_chart(pred_prob_df.iloc[0])
+                                                                # st.dataframe(pred_prob_df)
+                                                                # st.bar_chart(pred_prob_df.iloc[0])
+                                                                fig = px.bar(pred_prob_df, x = 'Probability', y = 'Category', orientation = 'h')
 
                                                                 # st.snow()
                                                         
@@ -322,10 +323,10 @@ def main():
                                                 pred_prob = clf.predict_proba([note])
                                                         
                                                 # View all classes of model
-                                                st.write(clf.classes_)
+                                                # st.write(clf.classes_)
 
                                                 # View probabilities of all classes for entered note
-                                                st.write(pred_prob)
+                                                # st.write(pred_prob)
                                                 pred_prob_df = pd.DataFrame(pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
 
@@ -367,10 +368,10 @@ def main():
                                                         new_pred_prob = clf.predict_proba([new_note])
                                                         
                                                         # View all classes of model
-                                                        st.write(clf.classes_)
+                                                        # st.write(clf.classes_)
 
                                                         # View probabilities of all classes for new entered note
-                                                        st.write(new_pred_prob)
+                                                        # st.write(new_pred_prob)
                                                         new_pred_prob_df = pd.DataFrame(new_pred_prob, columns = ['Career', 'Education', 'Goals', 'Groceries', 'People', 'Religion', 'Travel'])
 
 
@@ -398,7 +399,7 @@ def main():
                                                                         st.write(f'It can now also be: {new_second_category}')
                                                         
                                                         st.caption("New Prediction Probabilities by Category for Note")
-                                                        st.dataframe(new_pred_prob_df)
+                                                        # st.dataframe(new_pred_prob_df)
                                                         st.bar_chart(new_pred_prob_df.iloc[0])
 
                                                 st.caption("Note: If your answer to the below prompt is 'No', you will be given the option to manually enter a category. Otherwise, the new highest predicted category will be used.")
