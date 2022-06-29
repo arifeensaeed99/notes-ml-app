@@ -11,6 +11,7 @@ import hashlib
 import time
 import requests
 from datetime  import datetime, timedelta
+import plotly.graph_objects as go
 
 special_chars = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.', '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
 
@@ -199,7 +200,7 @@ def main():
                                                                 st.caption("Prediction Probabilities by Category for Note")
                                                                 # st.dataframe(pred_prob_df)
                                                                 # st.bar_chart(pred_prob_df.iloc[0])
-                                                                fig = px.bar(pred_prob_df, orientation = 'h')
+                                                                fig = go.Figure(data = [go.pie(pred_prob_df, hole = 0.3)])
                                                                 st.write(fig)
 
                                                                 # st.snow()
@@ -356,8 +357,10 @@ def main():
                                                 
                                                 st.caption("Prediction Probabilities by Category for Note (Past)")
                                                 # st.dataframe(pred_prob_df)
-                                                st.bar_chart(pred_prob_df.iloc[0])
-                                                
+                                                # st.bar_chart(pred_prob_df.iloc[0])
+                                                fig = go.Figure(data = [go.pie(pred_prob_df, hole = 0.3)])
+                                                st.write(fig)
+
                                                 if st.button('Categorize Edited Note'):
                                                         # Get latest prediction
                                                         new_pred_category = str(clf.predict([new_note])[0])
@@ -401,7 +404,9 @@ def main():
                                                         
                                                         st.caption("New Prediction Probabilities by Category for Note")
                                                         # st.dataframe(new_pred_prob_df)
-                                                        st.bar_chart(new_pred_prob_df.iloc[0])
+                                                        # st.bar_chart(new_pred_prob_df.iloc[0])
+                                                        fig = go.Figure(data = [go.pie(new_pred_prob_df, hole = 0.3)])
+                                                        st.write(fig)
 
                                                 st.caption("Note: If your answer to the below prompt is 'No', you will be given the option to manually enter a category. Otherwise, the new highest predicted category will be used.")
                                                 manual_switch = st.radio("Are you okay with the note being edited to have the highest predicted category?", ['Yes', 'No'])
