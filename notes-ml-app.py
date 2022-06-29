@@ -156,7 +156,7 @@ def main():
                                                 pred_category = str(clf.predict([note])[0])
                                                 
                                                 # If button is pressed
-                                                st.caption('NOTE: If your notes are not predicting well, try adding details. For example, instead of "UT", enter "the Univeristy of Texas at Austin." Additonally, note that the highest predicted category will be used and stored by default. This can be edited by selecting Update Notes from above.')
+                                                st.caption('NOTE: If your notes are not predicting well, try adding more details. For example, enter "the Univeristy of Texas at Austin" instead of "UT." Additionally, the highest predicted category will be used and stored by default. This can be edited by selecting Update Notes from above.')
                                                 if st.button('Categorize Note'):
                                                         if note:
                                                                 # Get latest prediction
@@ -199,7 +199,8 @@ def main():
                                                                 st.caption("Prediction Probabilities by Category for Note")
                                                                 # st.dataframe(pred_prob_df)
                                                                 # st.bar_chart(pred_prob_df.iloc[0])
-                                                                fig = px.bar(pred_prob_df, x = 'Probability', y = 'Category', orientation = 'h')
+                                                                fig = px.bar(pred_prob_df, orientation = 'h')
+                                                                st.write(fig)
 
                                                                 # st.snow()
                                                         
