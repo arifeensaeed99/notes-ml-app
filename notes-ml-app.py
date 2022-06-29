@@ -199,7 +199,7 @@ def main():
                                                                 st.caption("Prediction Probabilities by Category for Note")
                                                                 # st.dataframe(pred_prob_df)
                                                                 # st.bar_chart(pred_prob_df.iloc[0])
-                                                                fig = px.pie(hole = 0.3, labels = pred_prob_df.values(), names = pred_prob_df.keys())
+                                                                fig = px.pie(hole = 0.3, data = pred_prob_df)
                                                                 st.plotly_chart(fig)
                                                                 # st.snow()
                                                         
@@ -356,7 +356,7 @@ def main():
                                                 st.caption("Prediction Probabilities by Category for Note (Past)")
                                                 # st.dataframe(pred_prob_df)
                                                 # st.bar_chart(pred_prob_df.iloc[0])
-                                                fig = px.pie(hole = 0.3, labels = pred_prob_df.values(), names = pred_prob_df.keys())
+                                                fig = px.pie(hole = 0.3, data = pred_prob_df)
                                                 st.plotly_chart(fig)
 
                                                 if st.button('Categorize Edited Note'):
@@ -403,7 +403,7 @@ def main():
                                                         st.caption("New Prediction Probabilities by Category for Note")
                                                         # st.dataframe(new_pred_prob_df)
                                                         # st.bar_chart(new_pred_prob_df.iloc[0])
-                                                        fig = px.pie(hole = 0.3, labels = new_pred_prob_df.values(), names = new_pred_prob_df.keys())
+                                                        fig = px.pie(hole = 0.3, data = new_pred_prob_df)
                                                         st.plotly_chart(fig)
 
                                                 st.caption("Note: If your answer to the below prompt is 'No', you will be given the option to manually enter a category. Otherwise, the new highest predicted category will be used.")
